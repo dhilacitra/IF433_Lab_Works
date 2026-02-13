@@ -3,11 +3,9 @@ package oop_72495_nadhilacitra.week02
 class Student (
     val name: String,
     val nim: String,
-    val major: String
+    var major: String,
+    var gpa: Double = 0.0
 ){
-
-    // Secondary constructor (default jurusan)
-    constructor(name: String, nim: String) : this(name, nim, "Non-Matriculated")
 
     init{
         if(nim.length != 5) {

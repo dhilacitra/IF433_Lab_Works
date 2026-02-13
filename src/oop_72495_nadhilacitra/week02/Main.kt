@@ -18,9 +18,10 @@ fun main(){
     if (nim.length !=5){
         println("ERROR: Pendaftaran dibatalkan. NIM harus 5 karakter!")
     } else {
+        print("Masukkan Jurusan:")
         val major = scanner.nextLine()
 
-        val s1 = Student(name, nim, major)
+        val s1 = Student(name, nim,major)
         println("Status: Pendaftaran Selesai.")
     }
 }
