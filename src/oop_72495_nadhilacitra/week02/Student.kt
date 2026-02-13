@@ -5,11 +5,15 @@ class Student (
     val nim: String,
     val major: String
 ){
+
+    // Secondary constructor (default jurusan)
+    constructor(name: String, nim: String) : this(name, nim, "Non-Matriculated")
+
     init{
-        if(nim.length !=5) {
+        if(nim.length != 5) {
             println("WARNING: Objek tercipta dengan NIM ($nim) yang tidak valid")
             println("Data mahasiswa $name mungkin akan bermasalah di sistem.")
-        }else {
+        } else {
             println("LOG: Objek Student $name berhasil dialokasikan di Memory")
         }
     }

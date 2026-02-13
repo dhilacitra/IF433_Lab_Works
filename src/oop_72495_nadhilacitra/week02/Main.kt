@@ -2,6 +2,7 @@ package oop_72495_nadhilacitra.week02
 
 import java.util.Scanner
 
+
 fun main(){
     val scanner = Scanner(System.`in`)
     println("---Aplikasi PMB UMN---")
