@@ -7,6 +7,10 @@ class Student (
     var gpa: Double = 0.0
 ){
 
+    // ✅ Tambahkan ini
+    constructor(name: String, nim: String)
+            : this(name, nim, "Non-Matriculated")
+
     init{
         if(nim.length != 5) {
             println("WARNING: Objek tercipta dengan NIM ($nim) yang tidak valid")
