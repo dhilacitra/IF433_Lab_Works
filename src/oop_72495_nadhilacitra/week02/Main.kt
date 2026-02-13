@@ -1,35 +1,69 @@
 package oop_72495_nadhilacitra.week02
+
 import java.util.Scanner
 
 fun main() {
     val scanner = Scanner(System.`in`)
 
-    println("--- Program Pencatat Peminjaman Buku ---")
+    println("=== MINI RPG BATTLE ===")
 
-    print("Masukkan Judul Buku: ")
-    val title = scanner.nextLine()
+    // 1. Input hero
+    print("Masukkan nama Hero: ")
+    val heroName = scanner.nextLine()
 
-    print("Masukkan Nama Peminjam: ")
-    val borrower = scanner.nextLine()
+    print("Masukkan base damage Hero: ")
+    val damage = scanner.nextInt()
+    scanner.nextLine()
 
-    print("Masukkan Lama Pinjam (hari): ")
-    var duration = scanner.nextInt()
+    val hero = Hero(heroName, damage)
 
-    // Validasi: tidak boleh minus
-    if (duration < 0) {
-        println("Durasi tidak boleh minus. Diubah menjadi 1 hari.")
-        duration = 1
+    // 2. Enemy HP
+    var enemyHp = 100
+
+    // 3. Main battle loop
+    while (hero.isAlive() && enemyHp > 0) {
+
+        println("\n--- TURN ---")
+        println("HP ${hero.name}: ${hero.hp}")
+        println("HP Musuh: $enemyHp")
+        println("1. Serang")
+        println("2. Kabur")
+        print("Pilih aksi: ")
+
+        val choice = scanner.nextInt()
+        scanner.nextLine()
+
+        if (choice == 1) {
+            hero.attack("Musuh")
+            enemyHp -= hero.baseDamage
+
+            if (enemyHp < 0) enemyHp = 0
+            println("HP Musuh sekarang: $enemyHp")
+
+            if (enemyHp > 0) {
+                val enemyDamage = (10..20).random()
+                println("Musuh menyerang balik!")
+                hero.takeDamage(enemyDamage)
+            }
+
+        } else if (choice == 2) {
+            println("${hero.name} kabur dari pertempuran!")
+            break
+        } else {
+            println("Pilihan tidak valid!")
+        }
     }
 
-    // Buat objek Loan
-    val loan = Loan(title, borrower, duration)
+    // 4. Hasil akhir
+    println("\n=== HASIL PERTEMPURAN ===")
 
-    // Tampilkan hasil
-    println("\n--- Detail Peminjaman ---")
-    println("Judul Buku: ${loan.bookTitle}")
-    println("Peminjam: ${loan.borrower}")
-    println("Lama Pinjam: ${loan.loanDuration} hari")
-    println("Total Denda: Rp ${loan.calculateFine()}")
+    if (!hero.isAlive()) {
+        println("${hero.name} kalah! Musuh menang!")
+    } else if (enemyHp <= 0) {
+        println("${hero.name} menang! Musuh dikalahkan!")
+    } else {
+        println("Pertempuran berakhir tanpa pemenang.")
+    }
 
     scanner.close()
 }
