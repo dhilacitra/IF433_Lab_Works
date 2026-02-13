@@ -1,45 +1,35 @@
 package oop_72495_nadhilacitra.week02
-
 import java.util.Scanner
 
 fun main() {
     val scanner = Scanner(System.`in`)
 
-    println("--- APLIKASI PMB UMN ---")
+    println("--- Program Pencatat Peminjaman Buku ---")
 
-    print("Masukkan Nama: ")
-    val name = scanner.nextLine()
+    print("Masukkan Judul Buku: ")
+    val title = scanner.nextLine()
 
-    print("Masukkan NIM (Wajib 5 Karakter): ")
-    val nim = scanner.nextLine()
+    print("Masukkan Nama Peminjam: ")
+    val borrower = scanner.nextLine()
 
-    // Validasi panjang NIM
-    if (nim.length != 5) {
-        println("NIM harus 5 karakter! Pendaftaran dibatalkan.")
-        return
+    print("Masukkan Lama Pinjam (hari): ")
+    var duration = scanner.nextInt()
+
+    // Validasi: tidak boleh minus
+    if (duration < 0) {
+        println("Durasi tidak boleh minus. Diubah menjadi 1 hari.")
+        duration = 1
     }
 
-    println("Status: Pendaftaran Selesai.")
+    // Buat objek Loan
+    val loan = Loan(title, borrower, duration)
 
-    // === LANGKAH 6: Menu Pilihan (Interaction Loop) ===
-    print("Pilih Jalur (1. Reguler, 2. Umum): ")
-    val type = scanner.nextInt()
-    scanner.nextLine() // consume newline
+    // Tampilkan hasil
+    println("\n--- Detail Peminjaman ---")
+    println("Judul Buku: ${loan.bookTitle}")
+    println("Peminjam: ${loan.borrower}")
+    println("Lama Pinjam: ${loan.loanDuration} hari")
+    println("Total Denda: Rp ${loan.calculateFine()}")
 
-    if (type == 1) {
-        print("Masukkan Jurusan: ")
-        val major = scanner.nextLine()
-
-        // Memanggil Primary Constructor
-        val s1 = Student(name, nim, major)
-        println("Terdaftar di: ${s1.major} dengan GPA awal ${s1.gpa}")
-
-    } else if (type == 2) {
-        // Memanggil Secondary Constructor (tanpa jurusan)
-        val s2 = Student(name, nim)
-        println("Terdaftar di: ${s2.major} dengan GPA awal ${s2.gpa}")
-
-    } else {
-        println("Pilihan tidak valid, pendaftaran batal!")
-    }
+    scanner.close()
 }
