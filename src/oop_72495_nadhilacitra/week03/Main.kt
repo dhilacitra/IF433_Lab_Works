@@ -2,12 +2,11 @@ package oop_72495_nadhilacitra.week03
 
 fun main(){
 
-    val weapon = Weapon("Dragon Slayer", 500)
+    val player = Player("Budi")
 
-    weapon.damage = -50
-    weapon.damage = 9999
+    player.addXp(50)
+    println("Level sekarang: ${player.level}")
 
-    println("Nama Weapon: ${weapon.name}")
-    println("Damage: ${weapon.damage}")
-    println("Tier: ${weapon.tier}")
+    player.addXp(60)
+    println("Level sekarang: ${player.level}")
 }
