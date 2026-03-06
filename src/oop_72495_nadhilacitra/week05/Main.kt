@@ -1,25 +1,15 @@
 package oop_72495_nadhilacitra.week05
 
-fun main(){
-    val dosen1 = Dosen(nama = "Pak Alex", nidn = "012345")
-    val admin1 = Admin(nama ="Bu Siti")
+fun main() {
 
-    val daftarPegawai: List<Pegawai> = listOf(dosen1, admin1)
+    val mathHelper = MathHelper()
 
-    println("=== AKTIVITAS PEGAWAI ===")
-    for (pegawai in daftarPegawai) {
-        pegawai.bekerja()
+    val luasPersegi = mathHelper.hitungLuas(4)
+    println("Luas Persegi: $luasPersegi")
 
-        when (pegawai){
-            is Dosen -> {
-                println("=> Terdeteksi sebagai Dosen (NIDN: ${pegawai.nidn}")
-                pegawai.mengajar()
-            }
-            is Admin -> {
-                println("=> Terdeteksi sebagai Admin")
-                pegawai.doAdminWork()
-            }
-        }
-        println("------------------------")
-    }
+    val luasPersegiPanjang = mathHelper.hitungLuas(5, 3)
+    println("Luas Persegi Panjang: $luasPersegiPanjang")
+
+    val luasLingkaran = mathHelper.hitungLuas(7.0)
+    println("Luas Lingkaran: $luasLingkaran")
 }
