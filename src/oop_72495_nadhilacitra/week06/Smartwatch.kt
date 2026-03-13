@@ -1,7 +1,8 @@
 package oop_72495_nadhilacitra.week06
 
 class Smartwatch : Watch(), BluetoothConnectable, Rechargeable {
-    override fun showTime(){
+
+    override fun showtime() {
         println("Layar OLED menyala: 14:00 WIB")
     }
 
