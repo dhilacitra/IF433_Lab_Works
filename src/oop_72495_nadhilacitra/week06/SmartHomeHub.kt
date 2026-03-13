@@ -16,4 +16,19 @@ class SmartHomeHub {
             }
         }
     }
+
+    fun activateSecurityMode() {
+        println("Security Mode diaktifkan!")
+
+        for (device in devices) {
+
+            if (device is Recordable) {
+                device.startRecord()
+            }
+
+            if (device is SmartSpeaker) {
+                device.playMusic("Sirine Peringatan")
+            }
+        }
+    }
 }
