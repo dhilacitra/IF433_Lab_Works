@@ -30,9 +30,16 @@ fun main() {
     println("\n=== TEST SEALED CLASS ===")
     val response: ApiResponse = ApiResponse.Success("Data berhasil ditarik!")
 
-    val uiMessage = when(response) {
+    val uiMessage = when (response) {
         is ApiResponse.Success -> "Tampilkan: ${response.data}"
         is ApiResponse.Error -> "Munculkan Alert: ${response.message}"
         ApiResponse.Loading -> "Tampilkan Spinner"
     }
+
+    println(uiMessage)
+
+    println("\n=== SIMULASI GAME START ===")
+
+    GameManager.startGame()
+    GameManager.startGame()
 }
