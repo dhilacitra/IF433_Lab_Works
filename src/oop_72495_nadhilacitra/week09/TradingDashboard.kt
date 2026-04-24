@@ -45,3 +45,4 @@ fun main() {
     println("TRADED PAIRS:")
     println(uniquePairs)
 }
+// Full pipeline tested successfully
