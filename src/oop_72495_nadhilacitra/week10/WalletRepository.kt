@@ -11,4 +11,12 @@ class WalletRepository<T> {
     fun getAll(): List<T> {
         return items
     }
+
+    fun <R> searchByName(name: String): List<R>
+            where R : HasName {
+
+        return items.filter {
+            (it as? HasName)?.name?.contains(name, ignoreCase = true) == true
+        } as List<R>
+    }
 }
